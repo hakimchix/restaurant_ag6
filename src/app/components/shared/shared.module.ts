@@ -24,7 +24,7 @@ import {AuthInterceptor} from '../security/auth.Interceptor';
 })
 export class SharedModule {
 
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<any> {
         return {
             ngModule: SharedModule,
             providers: [

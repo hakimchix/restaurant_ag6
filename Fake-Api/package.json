@@ -1,0 +1,16 @@
+{
+  "name": "fake-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "json:server": "json-server — watch db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "-": "0.0.1",
+    "json-server": "^0.16.3",
+    "save": "^2.4.0"
+  }
+}
