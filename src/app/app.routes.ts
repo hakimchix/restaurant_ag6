@@ -1,4 +1,4 @@
-import {Routes} from '@angular/router';
+
 import {HomeComponent} from './components/home/home.component';
 import {RestaurantsComponent} from './components/restaurants/restaurants.component';
 import {RestaurantDetailComponent} from './components/restaurants/restaurant-detail/restaurant-detail.component';
@@ -7,6 +7,9 @@ import {ReviewsComponent} from './components/restaurants/restaurant-detail/revie
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {LoginComponent} from './components/security/login/login.component';
 import {LoggedInGuard} from './components/security/loggedin.guard';
+import {ReservationComponent} from './components/reservation/reservation.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
@@ -17,7 +20,7 @@ export const ROUTES: Routes = [
         children: [
             {path: '', redirectTo: 'menu', pathMatch: 'full'},
             {path: 'menu', component: MenuComponent},
-            {path: 'chefs', loadChildren: './components/restaurants/restaurant-detail/chefs/chefs.module#ChefsModule'},
+            {path: 'chefs', loadChildren: './components/restaurants/restaurant-detail/chefs/chefs.module'},
             {path: 'reviews', component: ReviewsComponent},
         ]
     },
@@ -29,9 +32,14 @@ export const ROUTES: Routes = [
     },
 
     {path: 'about', loadChildren: './components/about/about.module#AboutModule'},
-    {path: 'blog', loadChildren: './components/blog/blog.module#BlogModule'},
-    {path: 'reservation', loadChildren: './components/reservation/reservation.module#ReservationModule'},
+    {path: 'blog', loadChildren:() => import( './components/blog/blog.module').then(m=>m.BlogModule)},
+    {path: 'reservation', component: ReservationComponent},
     {path: 'contact', loadChildren: './components/contact/contact.module#ContactModule'},
     {path: 'order-summary', loadChildren: './components/order/order-summary/order-summary.module#OrderSummaryModule'},
     {path: '**', component: NotFoundComponent}
 ];
+@NgModule({
+  imports: [RouterModule.forRoot(ROUTES)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

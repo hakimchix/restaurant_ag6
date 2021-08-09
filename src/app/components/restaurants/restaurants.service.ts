@@ -15,7 +15,7 @@ export class RestaurantsService {
     constructor(private http: HttpClient){//',') {,private fireStore: AngularFirestore
     }
     getAllRestaurants(): Observable<Restaurant[]> {
-        return this.http.get<Restaurant[]>(`${RESTAURANT_API}`);
+        return this.http.get<Restaurant[]>(`${RESTAURANT_API}/restaurants`);
    //return this.fireStore.collection('restaurant').valueChanges((d)=>
    // {console.log('restau',d);
       //this.subj$.next(d)

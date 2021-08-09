@@ -5,7 +5,7 @@
 
 export const environment = {
     production: false,
-    api: 'https:localhost:3001',api2: '/src/environments/db.json'
+    api: 'https:localhost:3001',api2: 'https://my-json-server.typicode.com/hakimchix/restaurant_ag6'
 };
 
 
